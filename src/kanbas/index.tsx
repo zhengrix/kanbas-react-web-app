@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { Course } from "./types";
 import Account from "./account";
 import * as client from "./courses/client";
+import { nanoid } from "@reduxjs/toolkit";
 
 function Kanbas() {
   const [courses, setCourses] = useState([] as Course[]);
@@ -18,6 +19,7 @@ function Kanbas() {
     description: "New Description",
   });
   const addNewCourse = async () => {
+    setCourse({ ...course, id: nanoid() });
     await client.addNewCourse(course);
   };
   const deleteCourse = async (courseId: string) => {

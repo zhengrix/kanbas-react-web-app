@@ -11,13 +11,15 @@ type Course = {
 }
 
 type Lesson = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   module: string;
 };
+
 type Module = {
   _id: string;
+  id: string;
   name: string;
   description: string;
   course: string;
