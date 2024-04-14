@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Course } from "../types";
 
-const API_BASE = process.env.REACT_APP_API_BASE;
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
 const COURSES_API = `${API_BASE}/api/courses`;
 
 export const addNewCourse = async (course: Course) => {
