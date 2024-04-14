@@ -1,4 +1,3 @@
-import { Course } from "../../kanbas/types";
 import { Route, Routes, useParams, useLocation } from "react-router-dom";
 import CourseNavigation from "./navigation";
 import CourseHeader from "./header";
@@ -6,20 +5,18 @@ import Modules from "./modules";
 import Home from "./home";
 import Assignments from "./assignments";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { findCourseById as clientCourseFindById } from "./client";
 
 
-function Courses({ courses }: { courses: Course[] }) {
+function Courses() {
   const { courseId } = useParams();
-  const COURSES_API = "http://localhost:4000/api/courses";
   const [course, setCourse] = useState<any>({ _id: "" });
-  const findCourseById = async (courseId?: string) => {
-    const response = await axios.get(
-      `${COURSES_API}/${courseId}`
-    );
-    setCourse(response.data);
+  const findCourseById = async (courseId: string) => {
+    const currentCourse = await clientCourseFindById(courseId);
+    setCourse(currentCourse);
   };
   useEffect(() => {
+    if (!courseId) return;
     findCourseById(courseId);
   }, [courseId]);
 

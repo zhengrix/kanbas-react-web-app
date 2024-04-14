@@ -1,10 +1,13 @@
 type Course = {
   _id: string;
+  id: string;
   name: string;
   number: string;
   startDate: string;
   endDate: string;
-  image: string;
+  department: string;
+  credits: number;
+  description: string;
 }
 
 type Lesson = {

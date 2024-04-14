@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaBook } from "react-icons/fa";
-import { Course } from "../database";
+import { Course } from "../types";
 import "./index.css";
 function Dashboard({ courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }:
   { courses: Course[], 
@@ -16,6 +16,8 @@ function Dashboard({ courses, course, setCourse, addNewCourse, deleteCourse, upd
       <h1>Dashboard</h1>   
       <div style={{maxWidth: 200}}>
         <h5>New Course</h5>
+        <input value={course.id} className="form-control"
+              onChange={(e) => setCourse({ ...course, id: e.target.value }) } />
         <input value={course.name} className="form-control"
               onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
         <input value={course.number} className="form-control"
@@ -42,7 +44,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse, deleteCourse, upd
             <div key={course._id} className="col" style={{ width: 300, paddingTop: 30, paddingBottom: 30 }}>
               <div className="card" style={{textWrap: "nowrap", whiteSpaceCollapse: "collapse"}}>
                 <Link to={`/Kanbas/Courses/${course._id}`}>
-                  <img src={`/images/${course.image}`} className="card-img-top" style={{ height: 150 }} alt=""/>
+                  <img src={`/images/gray.jpg`} className="card-img-top" style={{ height: 150 }} alt=""/>
                 </Link>
                 <div className="card-body">
                   <Link to={`/Kanbas/Courses/${course._id}`}>
